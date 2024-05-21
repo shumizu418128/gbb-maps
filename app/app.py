@@ -3,7 +3,6 @@ from collections import defaultdict
 import folium
 from flask import Flask, render_template
 
-from models.database import db_session
 from models.models import Country, Participant
 
 app = Flask(__name__)
