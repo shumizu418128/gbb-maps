@@ -43,15 +43,15 @@ INSERT INTO countries (country, country_ja, lat, lon, iso_code) VALUES
 ('Hungary', 'ハンガリー', 47.4979, 19.0402, 348);
 
 INSERT INTO participants (name, category, iso_code) VALUES
-("WING", "Solo", 410)
-("ALEXINHO", "Solo", 250)
-("JULARD", "Solo", 250)
-("KAJI", "Solo", 392)
-("MAXO", "Solo", 100)
-("OSIS", "Solo", 372)
-("ABO ICE", "Solo", 682)
-("STEADY", "Solo", 410)
-("PACMAX", "Solo", 250)
-("HELIUM", "Solo", 643)
-("IMPROVER", "Solo", 643)
-("STITCH", "Solo", 458)
+("WING", "Solo", 410),
+("ALEXINHO", "Solo", 250),
+("JULARD", "Solo", 250),
+("KAJI", "Solo", 392),
+("MAXO", "Solo", 100),
+("OSIS", "Solo", 372),
+("ABO ICE", "Solo", 682),
+("STEADY", "Solo", 410),
+("PACMAX", "Solo", 250),
+("HELIUM", "Solo", 643),
+("IMPROVER", "Solo", 643),
+("STITCH", "Solo", 458);
