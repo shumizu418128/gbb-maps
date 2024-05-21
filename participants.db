@@ -16,9 +16,9 @@ CREATE TABLE participants (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,  -- 出場者名
     category TEXT NOT NULL,  -- 部門
-    country TEXT NOT NULL,  -- 国
+    iso_code INTEGER NOT NULL,  -- 国
     members TEXT,
-    FOREIGN KEY (country) REFERENCES countries(iso_code)
+    FOREIGN KEY (iso_code) REFERENCES countries(iso_code)
 );
 
 INSERT INTO countries (country, country_ja, lat, lon, iso_code) VALUES
@@ -43,15 +43,15 @@ INSERT INTO countries (country, country_ja, lat, lon, iso_code) VALUES
 ('Hungary', 'ハンガリー', 47.4979, 19.0402, 348);
 
 INSERT INTO participants (name, category, country) VALUES
-("WING", "Solo", "Korea")
-("ALEXINHO", "Solo", "France")
-("JULARD", "Solo", "France")
-("KAJI", "Solo", "Japan")
-("MAXO", "Solo", "Bulgaria")
-("OSIS", "Solo", "Ireland")
-("ABO ICE", "Solo", "Saudi Arabia")
-("STEADY", "Solo", "Korea")
-("PACMAX", "Solo", "France")
-("HELIUM", "Solo", "Russia")
-("IMPROVER", "Solo", "Russia")
-("STITCH", "Solo", "Malaysia")
+("WING", "Solo", 410)
+("ALEXINHO", "Solo", 250)
+("JULARD", "Solo", 250)
+("KAJI", "Solo", 392)
+("MAXO", "Solo", 100)
+("OSIS", "Solo", 372)
+("ABO ICE", "Solo", 682)
+("STEADY", "Solo", 410)
+("PACMAX", "Solo", 250)
+("HELIUM", "Solo", 643)
+("IMPROVER", "Solo", 643)
+("STITCH", "Solo", 458)
