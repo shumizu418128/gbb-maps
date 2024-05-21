@@ -1,18 +1,288 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{{name}}</title>
-    </head>
-    <body>
-    <h1>ただの神社</h1>
-    <form action="/index" method="POST">
-        <input type="text" name="name" placeholder="Enter name">
-        <input type="submit" value="Submit">
-    </form>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_751b911c6692050e0a74b0453ea6e42d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_751b911c6692050e0a74b0453ea6e42d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_751b911c6692050e0a74b0453ea6e42d = L.map(
+                "map_751b911c6692050e0a74b0453ea6e42d",
+                {
+                    center: [20.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 2,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
 
-    {% for onegai in all_country %}
-    <p>{{country.name}}：{{country.name_ja}}（{{country.iso_code}}）</p>
-    {% endfor %}
+            
 
-    </body>
+        
+    
+            var tile_layer_34fd029222eefeb9b297f73b18a4e509 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_34fd029222eefeb9b297f73b18a4e509.addTo(map_751b911c6692050e0a74b0453ea6e42d);
+        
+    
+            var marker_7113dd506f57919e10f49236e0328d6e = L.marker(
+                [37.5665, 126.978],
+                {}
+            ).addTo(map_751b911c6692050e0a74b0453ea6e42d);
+        
+    
+            var icon_8c1234b583af1a0112f59e227000c8b6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7113dd506f57919e10f49236e0328d6e.setIcon(icon_8c1234b583af1a0112f59e227000c8b6);
+        
+    
+        var popup_173c90bc2f6abc824aeef121541a48a6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_87748d5778c8cc5693665c1866eba1b8 = $(`<div id="html_87748d5778c8cc5693665c1866eba1b8" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Korea</h3><h4 style="margin: 0; color: #F0632F;">韓国</h4>             <p style="margin: 5px 0;">                 <strong>WING</strong> (Solo)<br>             </p>                          <p style="margin: 5px 0;">                 <strong>STEADY</strong> (Solo)<br>             </p>             </div></div>`)[0];
+                popup_173c90bc2f6abc824aeef121541a48a6.setContent(html_87748d5778c8cc5693665c1866eba1b8);
+            
+        
+
+        marker_7113dd506f57919e10f49236e0328d6e.bindPopup(popup_173c90bc2f6abc824aeef121541a48a6)
+        ;
+
+        
+    
+    
+            var marker_92f711f03c94d62c8001193d91c33991 = L.marker(
+                [48.8566, 2.3522],
+                {}
+            ).addTo(map_751b911c6692050e0a74b0453ea6e42d);
+        
+    
+            var icon_a64f73b63e428b61ec3a35e9a860d866 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_92f711f03c94d62c8001193d91c33991.setIcon(icon_a64f73b63e428b61ec3a35e9a860d866);
+        
+    
+        var popup_450c629768e0e906452722ecab09b48e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fa8cf6429a917f5db1b0db63949faad1 = $(`<div id="html_fa8cf6429a917f5db1b0db63949faad1" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">France</h3><h4 style="margin: 0; color: #F0632F;">フランス</h4>             <p style="margin: 5px 0;">                 <strong>ALEXINHO</strong> (Solo)<br>             </p>                          <p style="margin: 5px 0;">                 <strong>JULARD</strong> (Solo)<br>             </p>                          <p style="margin: 5px 0;">                 <strong>PACMAX</strong> (Solo)<br>             </p>             </div></div>`)[0];
+                popup_450c629768e0e906452722ecab09b48e.setContent(html_fa8cf6429a917f5db1b0db63949faad1);
+            
+        
+
+        marker_92f711f03c94d62c8001193d91c33991.bindPopup(popup_450c629768e0e906452722ecab09b48e)
+        ;
+
+        
+    
+    
+            var marker_7c4f68fa3899eee04edb9c4b6f6fbfb2 = L.marker(
+                [35.6895, 139.6917],
+                {}
+            ).addTo(map_751b911c6692050e0a74b0453ea6e42d);
+        
+    
+            var icon_486d2a6ce5fda6f0ea77b9b4c8e1eabb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7c4f68fa3899eee04edb9c4b6f6fbfb2.setIcon(icon_486d2a6ce5fda6f0ea77b9b4c8e1eabb);
+        
+    
+        var popup_7daa8d863d3037c24f28429e23704e67 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_222c41fa91d18428d58d7de37cd7d5f8 = $(`<div id="html_222c41fa91d18428d58d7de37cd7d5f8" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Japan</h3><h4 style="margin: 0; color: #F0632F;">日本</h4>             <p style="margin: 5px 0;">                 <strong>KAJI</strong> (Solo)<br>             </p>             </div></div>`)[0];
+                popup_7daa8d863d3037c24f28429e23704e67.setContent(html_222c41fa91d18428d58d7de37cd7d5f8);
+            
+        
+
+        marker_7c4f68fa3899eee04edb9c4b6f6fbfb2.bindPopup(popup_7daa8d863d3037c24f28429e23704e67)
+        ;
+
+        
+    
+    
+            var marker_9feb18681bf1c80cd48c5011742540b9 = L.marker(
+                [42.6977, 23.3219],
+                {}
+            ).addTo(map_751b911c6692050e0a74b0453ea6e42d);
+        
+    
+            var icon_0eb2819d2d209fd60b866f634c63e100 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9feb18681bf1c80cd48c5011742540b9.setIcon(icon_0eb2819d2d209fd60b866f634c63e100);
+        
+    
+        var popup_64a163acdb05a638c8497f441d6b6646 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8759f8a997380c02c09f4e903ddfebe0 = $(`<div id="html_8759f8a997380c02c09f4e903ddfebe0" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Bulgaria</h3><h4 style="margin: 0; color: #F0632F;">ブルガリア</h4>             <p style="margin: 5px 0;">                 <strong>MAXO</strong> (Solo)<br>             </p>             </div></div>`)[0];
+                popup_64a163acdb05a638c8497f441d6b6646.setContent(html_8759f8a997380c02c09f4e903ddfebe0);
+            
+        
+
+        marker_9feb18681bf1c80cd48c5011742540b9.bindPopup(popup_64a163acdb05a638c8497f441d6b6646)
+        ;
+
+        
+    
+    
+            var marker_7dbbf6bf22777d1331a0b1c609f77ae8 = L.marker(
+                [53.3498, -6.2603],
+                {}
+            ).addTo(map_751b911c6692050e0a74b0453ea6e42d);
+        
+    
+            var icon_e690ffa9adac5f79338b80da42b843c0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7dbbf6bf22777d1331a0b1c609f77ae8.setIcon(icon_e690ffa9adac5f79338b80da42b843c0);
+        
+    
+        var popup_4c477ac7bd3e1802a490a9f146c6e12b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f74bf84696b1b063b2d2db1c7d990066 = $(`<div id="html_f74bf84696b1b063b2d2db1c7d990066" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Ireland</h3><h4 style="margin: 0; color: #F0632F;">アイルランド</h4>             <p style="margin: 5px 0;">                 <strong>OSIS</strong> (Solo)<br>             </p>             </div></div>`)[0];
+                popup_4c477ac7bd3e1802a490a9f146c6e12b.setContent(html_f74bf84696b1b063b2d2db1c7d990066);
+            
+        
+
+        marker_7dbbf6bf22777d1331a0b1c609f77ae8.bindPopup(popup_4c477ac7bd3e1802a490a9f146c6e12b)
+        ;
+
+        
+    
+    
+            var marker_77441825ab8e2cc43994f620141b8519 = L.marker(
+                [24.7136, 46.6753],
+                {}
+            ).addTo(map_751b911c6692050e0a74b0453ea6e42d);
+        
+    
+            var icon_b4775c6de47b7d2d8872c9b90a5b7a48 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_77441825ab8e2cc43994f620141b8519.setIcon(icon_b4775c6de47b7d2d8872c9b90a5b7a48);
+        
+    
+        var popup_89794678269cacac37bb8433790ed98b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e034f3356b3521ca80df9724d6f92a54 = $(`<div id="html_e034f3356b3521ca80df9724d6f92a54" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Saudi Arabia</h3><h4 style="margin: 0; color: #F0632F;">サウジアラビア</h4>             <p style="margin: 5px 0;">                 <strong>ABO ICE</strong> (Solo)<br>             </p>             </div></div>`)[0];
+                popup_89794678269cacac37bb8433790ed98b.setContent(html_e034f3356b3521ca80df9724d6f92a54);
+            
+        
+
+        marker_77441825ab8e2cc43994f620141b8519.bindPopup(popup_89794678269cacac37bb8433790ed98b)
+        ;
+
+        
+    
+    
+            var marker_e1fbbe91ea7d37bba2d98df6a225f117 = L.marker(
+                [55.7558, 37.6176],
+                {}
+            ).addTo(map_751b911c6692050e0a74b0453ea6e42d);
+        
+    
+            var icon_480c692edeb09f24118896e400f32b82 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e1fbbe91ea7d37bba2d98df6a225f117.setIcon(icon_480c692edeb09f24118896e400f32b82);
+        
+    
+        var popup_d777a24c90517a7f62442a16aae4e4fd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_34e909c2dbe045159ff3c613c27c0304 = $(`<div id="html_34e909c2dbe045159ff3c613c27c0304" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Russia</h3><h4 style="margin: 0; color: #F0632F;">ロシア</h4>             <p style="margin: 5px 0;">                 <strong>HELIUM</strong> (Solo)<br>             </p>                          <p style="margin: 5px 0;">                 <strong>IMPROVER</strong> (Solo)<br>             </p>             </div></div>`)[0];
+                popup_d777a24c90517a7f62442a16aae4e4fd.setContent(html_34e909c2dbe045159ff3c613c27c0304);
+            
+        
+
+        marker_e1fbbe91ea7d37bba2d98df6a225f117.bindPopup(popup_d777a24c90517a7f62442a16aae4e4fd)
+        ;
+
+        
+    
+    
+            var marker_40e3776d98e6b4fa1c61d2f285d20746 = L.marker(
+                [3.139, 101.6869],
+                {}
+            ).addTo(map_751b911c6692050e0a74b0453ea6e42d);
+        
+    
+            var icon_6acf9ed9dfac4e9bdf8a5e455c748045 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_40e3776d98e6b4fa1c61d2f285d20746.setIcon(icon_6acf9ed9dfac4e9bdf8a5e455c748045);
+        
+    
+        var popup_5e34554d93214d9113fa1c7117ee95cf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_95b22ea1ba858fef14ae02dbf5031445 = $(`<div id="html_95b22ea1ba858fef14ae02dbf5031445" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Malaysia</h3><h4 style="margin: 0; color: #F0632F;">マレーシア</h4>             <p style="margin: 5px 0;">                 <strong>STITCH</strong> (Solo)<br>             </p>             </div></div>`)[0];
+                popup_5e34554d93214d9113fa1c7117ee95cf.setContent(html_95b22ea1ba858fef14ae02dbf5031445);
+            
+        
+
+        marker_40e3776d98e6b4fa1c61d2f285d20746.bindPopup(popup_5e34554d93214d9113fa1c7117ee95cf)
+        ;
+
+        
+    
+</script>
 </html>
