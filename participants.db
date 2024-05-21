@@ -42,7 +42,7 @@ INSERT INTO countries (country, country_ja, lat, lon, iso_code) VALUES
 ('Denmark', 'デンマーク', 55.6761, 12.5683, 208),
 ('Hungary', 'ハンガリー', 47.4979, 19.0402, 348);
 
-INSERT INTO participants (name, category, country) VALUES
+INSERT INTO participants (name, category, iso_code) VALUES
 ("WING", "Solo", 410)
 ("ALEXINHO", "Solo", 250)
 ("JULARD", "Solo", 250)
