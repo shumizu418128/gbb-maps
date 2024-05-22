@@ -17,7 +17,7 @@ def index():
 
     # 地図の中心座標
     map_center = [20, 0]
-    m = folium.Map(location=map_center, zoom_start=2)
+    m = folium.Map(location=map_center, zoom_start=3)
 
     # 座標ごとに参加者をグループ化
     coord_participants = defaultdict(list)
@@ -62,7 +62,7 @@ def index():
 
         flag_icon = folium.CustomIcon(
             icon_image=r"./models/flags/" + country_name + ".png",  # アイコン画像のパス
-            icon_size=(40, 40),  # アイコンのサイズ（幅、高さ）
+            icon_size=(45, 45),  # アイコンのサイズ（幅、高さ）
         )
         # マーカーを追加
         folium.Marker(
