@@ -60,11 +60,15 @@ def index():
 
         popup = folium.Popup(popup_content, max_width=1000)
 
+        flag_icon = folium.CustomIcon(
+            icon_image=r"./models/flags/" + country_name + ".png",  # アイコン画像のパス
+            icon_size=(40, 40),  # アイコンのサイズ（幅、高さ）
+        )
         # マーカーを追加
         folium.Marker(
             location=[lat, lon],
             popup=popup,
-            icon=folium.Icon(color='red')
+            icon=flag_icon
         ).add_to(m)
 
     m.save(r'app/templates/index.html')
