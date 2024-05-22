@@ -1,355 +1,558 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-
-    <script>
-      L_NO_TOUCH = false;
-      L_DISABLE_3D = false;
-    </script>
-
-    <style>
-      html,
-      body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-    <style>
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-      }
-      header {
-        top: 0;
-        width: 100%;
-        background-color: #f0632f;
-        color: #fff;
-        text-align: center;
-        padding: 10px 0;
-      }
-    </style>
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1939b7636d19952a2a6f395d551d0375 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_1939b7636d19952a2a6f395d551d0375" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1939b7636d19952a2a6f395d551d0375 = L.map(
+                "map_1939b7636d19952a2a6f395d551d0375",
+                {
+                    center: [20.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 2,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
 
-    <meta
-      name="viewport"
-      content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <style>
-      #map_2f80842c34a7f5f51fb02f1e4cac2db4 {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        left: 0%;
-        top: 0%;
-      }
-      .leaflet-container {
-        font-size: 1rem;
-      }
-    </style>
-    <link rel="stylesheet" href="/static/css/style.css" />
-  </head>
-  <body>
-    <header>
-        <h1>World Map of Event Participants</h1>
-    </header>
-    <div class="folium-map" id="map_2f80842c34a7f5f51fb02f1e4cac2db4"></div>
-  </body>
-  <script>
-    var map_2f80842c34a7f5f51fb02f1e4cac2db4 = L.map(
-      "map_2f80842c34a7f5f51fb02f1e4cac2db4",
-      {
-        center: [20.0, 0.0],
-        crs: L.CRS.EPSG3857,
-        zoom: 2,
-        zoomControl: false,
-        preferCanvas: false,
-      }
-    );
+            
 
-    var tile_layer_1e4384e6493561abf58d7f331c5683ca = L.tileLayer(
-      "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-      {
-        attribution:
-          '\u0026copy; \u003ca href="https://www.openstreetmap.org/copyright"\u003eOpenStreetMap\u003c/a\u003e contributors',
-        detectRetina: false,
-        maxNativeZoom: 19,
-        maxZoom: 19,
-        minZoom: 0,
-        noWrap: false,
-        opacity: 1,
-        subdomains: "abc",
-        tms: false,
-      }
-    );
+        
+    
+            var tile_layer_6b166d375db2877a94701df6d8d4cb63 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_6b166d375db2877a94701df6d8d4cb63.addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var marker_6c701bc5f8d68891cbbcd3e71c866b5b = L.marker(
+                [37.5665, 126.978],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_500b419ad0d002ceada6dc9d7c2bf3db = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6c701bc5f8d68891cbbcd3e71c866b5b.setIcon(icon_500b419ad0d002ceada6dc9d7c2bf3db);
+        
+    
+        var popup_e109b25065f70b35151969560ca56d6c = L.popup({"maxWidth": 1000});
 
-    tile_layer_1e4384e6493561abf58d7f331c5683ca.addTo(
-      map_2f80842c34a7f5f51fb02f1e4cac2db4
-    );
+        
+            
+                var html_eeb7839e8a91a4f845458c9148ca13d6 = $(`<div id="html_eeb7839e8a91a4f845458c9148ca13d6" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">South Korea</h3><h4 style="margin: 0; color: #F0632F;">韓国</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">WING</strong> (Solo)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">STEADY</strong> (Solo)                 </p>                 </div></div>`)[0];
+                popup_e109b25065f70b35151969560ca56d6c.setContent(html_eeb7839e8a91a4f845458c9148ca13d6);
+            
+        
 
-    var marker_51c185c5e18948112e9406febfec5f83 = L.marker(
-      [37.5665, 126.978],
-      {}
-    ).addTo(map_2f80842c34a7f5f51fb02f1e4cac2db4);
+        marker_6c701bc5f8d68891cbbcd3e71c866b5b.bindPopup(popup_e109b25065f70b35151969560ca56d6c)
+        ;
 
-    var icon_8868415a51970b3ef31f2a3a77028791 = L.AwesomeMarkers.icon({
-      extraClasses: "fa-rotate-0",
-      icon: "info-sign",
-      iconColor: "white",
-      markerColor: "red",
-      prefix: "glyphicon",
-    });
-    marker_51c185c5e18948112e9406febfec5f83.setIcon(
-      icon_8868415a51970b3ef31f2a3a77028791
-    );
+        
+    
+    
+            var marker_a3530f5cf52d114f70ebdc1fc703d66c = L.marker(
+                [48.8566, 2.3522],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_562f6a3df96659e568e5be9f79d72320 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a3530f5cf52d114f70ebdc1fc703d66c.setIcon(icon_562f6a3df96659e568e5be9f79d72320);
+        
+    
+        var popup_81e7047d3072245bb2d5edb6e7d3de2a = L.popup({"maxWidth": 1000});
 
-    var popup_fe1cec9781112e7a228f21c20abfea2f = L.popup({ maxWidth: 300 });
+        
+            
+                var html_e8c3d5df4f9c9d4718fe53dc0a40a206 = $(`<div id="html_e8c3d5df4f9c9d4718fe53dc0a40a206" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">France</h3><h4 style="margin: 0; color: #F0632F;">フランス</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">ALEXINHO</strong> (Solo)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">JULARD</strong> (Solo)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">PACMAX</strong> (Solo)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">FRESH TONIC</strong> <span style="font-size: 0.8em; color=#222222">[Tag Team]【BOOKIE BLANCO, PACMAX】</span>                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">KOWLER RANGERS</strong> <span style="font-size: 0.8em; color=#222222">[Crew]【OSY, TUNECINOO, EPOCK, AËLMIGHT】</span>                 </p>                 </div></div>`)[0];
+                popup_81e7047d3072245bb2d5edb6e7d3de2a.setContent(html_e8c3d5df4f9c9d4718fe53dc0a40a206);
+            
+        
 
-    var html_845ddb988682834e95eef34975bc6ce7 = $(
-      `<div id="html_845ddb988682834e95eef34975bc6ce7" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">South Korea</h3><h4 style="margin: 0; color: #F0632F;">韓国</h4>             <p style="margin: 5px 0;">                 <strong>WING</strong> (Solo)<br>             </p>                          <p style="margin: 5px 0;">                 <strong>STEADY</strong> (Solo)<br>             </p>             </div></div>`
-    )[0];
-    popup_fe1cec9781112e7a228f21c20abfea2f.setContent(
-      html_845ddb988682834e95eef34975bc6ce7
-    );
+        marker_a3530f5cf52d114f70ebdc1fc703d66c.bindPopup(popup_81e7047d3072245bb2d5edb6e7d3de2a)
+        ;
 
-    marker_51c185c5e18948112e9406febfec5f83.bindPopup(
-      popup_fe1cec9781112e7a228f21c20abfea2f
-    );
+        
+    
+    
+            var marker_8f9f87e5f7a0c5540738c26f53351a63 = L.marker(
+                [35.6895, 139.6917],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_0bdfd5ec138f2644162040a0aab375fc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8f9f87e5f7a0c5540738c26f53351a63.setIcon(icon_0bdfd5ec138f2644162040a0aab375fc);
+        
+    
+        var popup_a3d3de42b598346b4b66c8137aeec399 = L.popup({"maxWidth": 1000});
 
-    var marker_8ce8291270da27625e2c7bc37e1fd199 = L.marker(
-      [48.8566, 2.3522],
-      {}
-    ).addTo(map_2f80842c34a7f5f51fb02f1e4cac2db4);
+        
+            
+                var html_7511222b368abc2f99ff10d1a06b4909 = $(`<div id="html_7511222b368abc2f99ff10d1a06b4909" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Japan</h3><h4 style="margin: 0; color: #F0632F;">日本</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">KAJI</strong> (Solo)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">JAIRO</strong> <span style="font-size: 0.8em; color=#222222">[Tag Team]【YAMORI, JOHN-T】</span>                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">UMA</strong> <span style="font-size: 0.8em; color=#222222">[Tag Team]【SE-MA, DYU-TAR】</span>                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">MICO</strong> <span style="font-size: 0.8em; color=#222222">[Tag Team]【MIZUKI, COLOA】</span>                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">ZIEGER</strong> <span style="font-size: 0.8em; color=#222222">[Tag Team]【YUICHI, YUSKE】</span>                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">SOUND OF SONY Ω</strong> <span style="font-size: 0.8em; color=#222222">[Crew]【SHINYAAA, BLY CREPSLEY, FKD】</span>                 </p>                 </div></div>`)[0];
+                popup_a3d3de42b598346b4b66c8137aeec399.setContent(html_7511222b368abc2f99ff10d1a06b4909);
+            
+        
 
-    var icon_66b9f4cf1da44dc37e89459d95875831 = L.AwesomeMarkers.icon({
-      extraClasses: "fa-rotate-0",
-      icon: "info-sign",
-      iconColor: "white",
-      markerColor: "red",
-      prefix: "glyphicon",
-    });
-    marker_8ce8291270da27625e2c7bc37e1fd199.setIcon(
-      icon_66b9f4cf1da44dc37e89459d95875831
-    );
+        marker_8f9f87e5f7a0c5540738c26f53351a63.bindPopup(popup_a3d3de42b598346b4b66c8137aeec399)
+        ;
 
-    var popup_2358253c9a8982598761e562e25f258d = L.popup({ maxWidth: 300 });
+        
+    
+    
+            var marker_1f57587dfada43752d2547ea233bc32f = L.marker(
+                [42.6977, 23.3219],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_ec9f89899c0cefc3df64c0e9c107e6b1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_1f57587dfada43752d2547ea233bc32f.setIcon(icon_ec9f89899c0cefc3df64c0e9c107e6b1);
+        
+    
+        var popup_a152e907e813cf0222f232e0cd3c6ab0 = L.popup({"maxWidth": 1000});
 
-    var html_8e166be3529c0483b1aeb7c21bf26b61 = $(
-      `<div id="html_8e166be3529c0483b1aeb7c21bf26b61" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">France</h3><h4 style="margin: 0; color: #F0632F;">フランス</h4>             <p style="margin: 5px 0;">                 <strong>ALEXINHO</strong> (Solo)<br>             </p>                          <p style="margin: 5px 0;">                 <strong>JULARD</strong> (Solo)<br>             </p>                          <p style="margin: 5px 0;">                 <strong>PACMAX</strong> (Solo)<br>             </p>             </div></div>`
-    )[0];
-    popup_2358253c9a8982598761e562e25f258d.setContent(
-      html_8e166be3529c0483b1aeb7c21bf26b61
-    );
+        
+            
+                var html_56a71571d103c8fc70100d58b58332ec = $(`<div id="html_56a71571d103c8fc70100d58b58332ec" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Bulgaria</h3><h4 style="margin: 0; color: #F0632F;">ブルガリア</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">MAXO</strong> (Solo)                 </p>                 </div></div>`)[0];
+                popup_a152e907e813cf0222f232e0cd3c6ab0.setContent(html_56a71571d103c8fc70100d58b58332ec);
+            
+        
 
-    marker_8ce8291270da27625e2c7bc37e1fd199.bindPopup(
-      popup_2358253c9a8982598761e562e25f258d
-    );
+        marker_1f57587dfada43752d2547ea233bc32f.bindPopup(popup_a152e907e813cf0222f232e0cd3c6ab0)
+        ;
 
-    var marker_3873be85aea0650f1ab64a01ab632753 = L.marker(
-      [35.6895, 139.6917],
-      {}
-    ).addTo(map_2f80842c34a7f5f51fb02f1e4cac2db4);
+        
+    
+    
+            var marker_50611f515b00165ced058217e623e83b = L.marker(
+                [53.3498, -6.2603],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_91883ce350cc5024a964bec96be753dd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_50611f515b00165ced058217e623e83b.setIcon(icon_91883ce350cc5024a964bec96be753dd);
+        
+    
+        var popup_77e4a366dd2ad21d00aa703884b8cff9 = L.popup({"maxWidth": 1000});
 
-    var icon_58ae28ec58418653a53480c9bd7f56a0 = L.AwesomeMarkers.icon({
-      extraClasses: "fa-rotate-0",
-      icon: "info-sign",
-      iconColor: "white",
-      markerColor: "red",
-      prefix: "glyphicon",
-    });
-    marker_3873be85aea0650f1ab64a01ab632753.setIcon(
-      icon_58ae28ec58418653a53480c9bd7f56a0
-    );
+        
+            
+                var html_2b941d9152610ff1b6f8bd47a1b15083 = $(`<div id="html_2b941d9152610ff1b6f8bd47a1b15083" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Ireland</h3><h4 style="margin: 0; color: #F0632F;">アイルランド</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">OSIS</strong> (Solo)                 </p>                 </div></div>`)[0];
+                popup_77e4a366dd2ad21d00aa703884b8cff9.setContent(html_2b941d9152610ff1b6f8bd47a1b15083);
+            
+        
 
-    var popup_963b82e2d3aae63ede2457aa67f9946f = L.popup({ maxWidth: 300 });
+        marker_50611f515b00165ced058217e623e83b.bindPopup(popup_77e4a366dd2ad21d00aa703884b8cff9)
+        ;
 
-    var html_6016e93202109c6a0a7d0de8b201b0c0 = $(
-      `<div id="html_6016e93202109c6a0a7d0de8b201b0c0" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Japan</h3><h4 style="margin: 0; color: #F0632F;">日本</h4>             <p style="margin: 5px 0;">                 <strong>KAJI</strong> (Solo)<br>             </p>             </div></div>`
-    )[0];
-    popup_963b82e2d3aae63ede2457aa67f9946f.setContent(
-      html_6016e93202109c6a0a7d0de8b201b0c0
-    );
+        
+    
+    
+            var marker_48af6198112f057ffb26962de3d05e7d = L.marker(
+                [24.7136, 46.6753],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_5214b8e72d1e81adb2d98b50ff8e4410 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_48af6198112f057ffb26962de3d05e7d.setIcon(icon_5214b8e72d1e81adb2d98b50ff8e4410);
+        
+    
+        var popup_38a372f26ce26179153318a22d709d7a = L.popup({"maxWidth": 1000});
 
-    marker_3873be85aea0650f1ab64a01ab632753.bindPopup(
-      popup_963b82e2d3aae63ede2457aa67f9946f
-    );
+        
+            
+                var html_b23fe64c1edd1cbfb3b32653676f114b = $(`<div id="html_b23fe64c1edd1cbfb3b32653676f114b" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Saudi Arabia</h3><h4 style="margin: 0; color: #F0632F;">サウジアラビア</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">ABO ICE</strong> (Solo)                 </p>                 </div></div>`)[0];
+                popup_38a372f26ce26179153318a22d709d7a.setContent(html_b23fe64c1edd1cbfb3b32653676f114b);
+            
+        
 
-    var marker_4c5bc10ed42371f86d9588168c20e993 = L.marker(
-      [42.6977, 23.3219],
-      {}
-    ).addTo(map_2f80842c34a7f5f51fb02f1e4cac2db4);
+        marker_48af6198112f057ffb26962de3d05e7d.bindPopup(popup_38a372f26ce26179153318a22d709d7a)
+        ;
 
-    var icon_11672ac8d6d95c913fda853de5ed359b = L.AwesomeMarkers.icon({
-      extraClasses: "fa-rotate-0",
-      icon: "info-sign",
-      iconColor: "white",
-      markerColor: "red",
-      prefix: "glyphicon",
-    });
-    marker_4c5bc10ed42371f86d9588168c20e993.setIcon(
-      icon_11672ac8d6d95c913fda853de5ed359b
-    );
+        
+    
+    
+            var marker_8e9145297861be6f17778d0aa09548f6 = L.marker(
+                [55.7558, 37.6176],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_d95433745fcc81a678787247a6951311 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8e9145297861be6f17778d0aa09548f6.setIcon(icon_d95433745fcc81a678787247a6951311);
+        
+    
+        var popup_275663f24d9655b5e5338036bbe85de6 = L.popup({"maxWidth": 1000});
 
-    var popup_b86b1715d69ef5b74c4988b383171cbe = L.popup({ maxWidth: 300 });
+        
+            
+                var html_ebb7476258f8e954b2b28ca30d6f096e = $(`<div id="html_ebb7476258f8e954b2b28ca30d6f096e" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Russia</h3><h4 style="margin: 0; color: #F0632F;">ロシア</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">HELIUM</strong> (Solo)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">IMPROVER</strong> (Solo)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">FAKE AND AUTOTUNE</strong> <span style="font-size: 0.8em; color=#222222">[Tag Team]【TARAS STANIN, IMPROVER】</span>                 </p>                 </div></div>`)[0];
+                popup_275663f24d9655b5e5338036bbe85de6.setContent(html_ebb7476258f8e954b2b28ca30d6f096e);
+            
+        
 
-    var html_f27e063154d6b9fcd7d100d8b204ca42 = $(
-      `<div id="html_f27e063154d6b9fcd7d100d8b204ca42" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Bulgaria</h3><h4 style="margin: 0; color: #F0632F;">ブルガリア</h4>             <p style="margin: 5px 0;">                 <strong>MAXO</strong> (Solo)<br>             </p>             </div></div>`
-    )[0];
-    popup_b86b1715d69ef5b74c4988b383171cbe.setContent(
-      html_f27e063154d6b9fcd7d100d8b204ca42
-    );
+        marker_8e9145297861be6f17778d0aa09548f6.bindPopup(popup_275663f24d9655b5e5338036bbe85de6)
+        ;
 
-    marker_4c5bc10ed42371f86d9588168c20e993.bindPopup(
-      popup_b86b1715d69ef5b74c4988b383171cbe
-    );
+        
+    
+    
+            var marker_229f070f556968da8d15eb0e363b7585 = L.marker(
+                [3.139, 101.6869],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_14cb39cd8a86cf04f0359a48bb703bd8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_229f070f556968da8d15eb0e363b7585.setIcon(icon_14cb39cd8a86cf04f0359a48bb703bd8);
+        
+    
+        var popup_6cefad42ff4c0d258cf71e57f86258d6 = L.popup({"maxWidth": 1000});
 
-    var marker_54103d75c986da0642fc7ed94d91ae77 = L.marker(
-      [53.3498, -6.2603],
-      {}
-    ).addTo(map_2f80842c34a7f5f51fb02f1e4cac2db4);
+        
+            
+                var html_a52123d5ab320c05875e1ea42ed47dc8 = $(`<div id="html_a52123d5ab320c05875e1ea42ed47dc8" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Malaysia</h3><h4 style="margin: 0; color: #F0632F;">マレーシア</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">STITCH</strong> (Solo)                 </p>                 </div></div>`)[0];
+                popup_6cefad42ff4c0d258cf71e57f86258d6.setContent(html_a52123d5ab320c05875e1ea42ed47dc8);
+            
+        
 
-    var icon_ba3c10d5997d0fde4fd3f2041af687fb = L.AwesomeMarkers.icon({
-      extraClasses: "fa-rotate-0",
-      icon: "info-sign",
-      iconColor: "white",
-      markerColor: "red",
-      prefix: "glyphicon",
-    });
-    marker_54103d75c986da0642fc7ed94d91ae77.setIcon(
-      icon_ba3c10d5997d0fde4fd3f2041af687fb
-    );
+        marker_229f070f556968da8d15eb0e363b7585.bindPopup(popup_6cefad42ff4c0d258cf71e57f86258d6)
+        ;
 
-    var popup_67fa58bef4bb3bb9f3263832dedc253d = L.popup({ maxWidth: 300 });
+        
+    
+    
+            var marker_ce13d1a35b3c57cb7e30d48c231cd094 = L.marker(
+                [35.6892, 51.389],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_e02954e49fd28a7720b6886a832eab51 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ce13d1a35b3c57cb7e30d48c231cd094.setIcon(icon_e02954e49fd28a7720b6886a832eab51);
+        
+    
+        var popup_8e50938dd1e26e6fb09e5c7e84bf2bba = L.popup({"maxWidth": 1000});
 
-    var html_bc9f2b5e2a97284f87107d291bf715e5 = $(
-      `<div id="html_bc9f2b5e2a97284f87107d291bf715e5" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Ireland</h3><h4 style="margin: 0; color: #F0632F;">アイルランド</h4>             <p style="margin: 5px 0;">                 <strong>OSIS</strong> (Solo)<br>             </p>             </div></div>`
-    )[0];
-    popup_67fa58bef4bb3bb9f3263832dedc253d.setContent(
-      html_bc9f2b5e2a97284f87107d291bf715e5
-    );
+        
+            
+                var html_ad3ca0bc9953cbeef5f30a4c071d214d = $(`<div id="html_ad3ca0bc9953cbeef5f30a4c071d214d" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Iran</h3><h4 style="margin: 0; color: #F0632F;">イラン</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">FUTURE MONSTER</strong> <span style="font-size: 0.8em; color=#222222">[Tag Team]【CJ, KARA】</span>                 </p>                 </div></div>`)[0];
+                popup_8e50938dd1e26e6fb09e5c7e84bf2bba.setContent(html_ad3ca0bc9953cbeef5f30a4c071d214d);
+            
+        
 
-    marker_54103d75c986da0642fc7ed94d91ae77.bindPopup(
-      popup_67fa58bef4bb3bb9f3263832dedc253d
-    );
+        marker_ce13d1a35b3c57cb7e30d48c231cd094.bindPopup(popup_8e50938dd1e26e6fb09e5c7e84bf2bba)
+        ;
 
-    var marker_a9bb83b247f9cd149bfc863fbeb1aa83 = L.marker(
-      [24.7136, 46.6753],
-      {}
-    ).addTo(map_2f80842c34a7f5f51fb02f1e4cac2db4);
+        
+    
+    
+            var marker_6462d5f547d38705149103292f415ca1 = L.marker(
+                [48.2082, 16.3738],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_b3f699c4f264018dec8380128367e992 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6462d5f547d38705149103292f415ca1.setIcon(icon_b3f699c4f264018dec8380128367e992);
+        
+    
+        var popup_59a5656a8fab7ab64ddffd034f754710 = L.popup({"maxWidth": 1000});
 
-    var icon_3ba8fdc0d7ca01ad35b5f6054d3d1537 = L.AwesomeMarkers.icon({
-      extraClasses: "fa-rotate-0",
-      icon: "info-sign",
-      iconColor: "white",
-      markerColor: "red",
-      prefix: "glyphicon",
-    });
-    marker_a9bb83b247f9cd149bfc863fbeb1aa83.setIcon(
-      icon_3ba8fdc0d7ca01ad35b5f6054d3d1537
-    );
+        
+            
+                var html_f504963820b73e17bf2da6f2c66724b1 = $(`<div id="html_f504963820b73e17bf2da6f2c66724b1" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Austria</h3><h4 style="margin: 0; color: #F0632F;">オーストリア</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">MATEJ</strong> (Loopstation)                 </p>                 </div></div>`)[0];
+                popup_59a5656a8fab7ab64ddffd034f754710.setContent(html_f504963820b73e17bf2da6f2c66724b1);
+            
+        
 
-    var popup_715fe0cf1554a4cd7a6f5835768976f7 = L.popup({ maxWidth: 300 });
+        marker_6462d5f547d38705149103292f415ca1.bindPopup(popup_59a5656a8fab7ab64ddffd034f754710)
+        ;
 
-    var html_24a4f9b3402b6f66bab49fdb2ab72609 = $(
-      `<div id="html_24a4f9b3402b6f66bab49fdb2ab72609" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Saudi Arabia</h3><h4 style="margin: 0; color: #F0632F;">サウジアラビア</h4>             <p style="margin: 5px 0;">                 <strong>ABO ICE</strong> (Solo)<br>             </p>             </div></div>`
-    )[0];
-    popup_715fe0cf1554a4cd7a6f5835768976f7.setContent(
-      html_24a4f9b3402b6f66bab49fdb2ab72609
-    );
+        
+    
+    
+            var marker_172a38e6d806acb6318e57abb1bcdea8 = L.marker(
+                [22.3193, 114.1694],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_acf7b36895c061e9ed1b581f4af5126c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_172a38e6d806acb6318e57abb1bcdea8.setIcon(icon_acf7b36895c061e9ed1b581f4af5126c);
+        
+    
+        var popup_ac74377a60b63163cd23df3a85c4b1fd = L.popup({"maxWidth": 1000});
 
-    marker_a9bb83b247f9cd149bfc863fbeb1aa83.bindPopup(
-      popup_715fe0cf1554a4cd7a6f5835768976f7
-    );
+        
+            
+                var html_0065b491b8ae10d68a4ea4c93f93829a = $(`<div id="html_0065b491b8ae10d68a4ea4c93f93829a" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Hong Kong</h3><h4 style="margin: 0; color: #F0632F;">香港</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">DUNCAN</strong> (Loopstation)                 </p>                 </div></div>`)[0];
+                popup_ac74377a60b63163cd23df3a85c4b1fd.setContent(html_0065b491b8ae10d68a4ea4c93f93829a);
+            
+        
 
-    var marker_68f91579aba0d12b55da4e1248e10a5e = L.marker(
-      [55.7558, 37.6176],
-      {}
-    ).addTo(map_2f80842c34a7f5f51fb02f1e4cac2db4);
+        marker_172a38e6d806acb6318e57abb1bcdea8.bindPopup(popup_ac74377a60b63163cd23df3a85c4b1fd)
+        ;
 
-    var icon_15aede7d66066a57fdb0f2e33fe75314 = L.AwesomeMarkers.icon({
-      extraClasses: "fa-rotate-0",
-      icon: "info-sign",
-      iconColor: "white",
-      markerColor: "red",
-      prefix: "glyphicon",
-    });
-    marker_68f91579aba0d12b55da4e1248e10a5e.setIcon(
-      icon_15aede7d66066a57fdb0f2e33fe75314
-    );
+        
+    
+    
+            var marker_65acbf08b0e3e7c29ee9a5a96b82dc08 = L.marker(
+                [38.9072, -77.0369],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_8bdbd1b9b2d2233a775aca96594ce6d4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_65acbf08b0e3e7c29ee9a5a96b82dc08.setIcon(icon_8bdbd1b9b2d2233a775aca96594ce6d4);
+        
+    
+        var popup_977cb4fa3e5e37d7bdf824997d619382 = L.popup({"maxWidth": 1000});
 
-    var popup_69ee173f6d4680fc7d765641c4189f55 = L.popup({ maxWidth: 300 });
+        
+            
+                var html_2f367a3280df9104eb77a74d18eb39c0 = $(`<div id="html_2f367a3280df9104eb77a74d18eb39c0" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">United States</h3><h4 style="margin: 0; color: #F0632F;">アメリカ合衆国</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">JOSH O</strong> (Loopstation)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">808BANON</strong> (Loopstation)                 </p>                 </div></div>`)[0];
+                popup_977cb4fa3e5e37d7bdf824997d619382.setContent(html_2f367a3280df9104eb77a74d18eb39c0);
+            
+        
 
-    var html_da09804cab8684194ac4abf017a5cb5b = $(
-      `<div id="html_da09804cab8684194ac4abf017a5cb5b" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Russia</h3><h4 style="margin: 0; color: #F0632F;">ロシア</h4>             <p style="margin: 5px 0;">                 <strong>HELIUM</strong> (Solo)<br>             </p>                          <p style="margin: 5px 0;">                 <strong>IMPROVER</strong> (Solo)<br>             </p>             </div></div>`
-    )[0];
-    popup_69ee173f6d4680fc7d765641c4189f55.setContent(
-      html_da09804cab8684194ac4abf017a5cb5b
-    );
+        marker_65acbf08b0e3e7c29ee9a5a96b82dc08.bindPopup(popup_977cb4fa3e5e37d7bdf824997d619382)
+        ;
 
-    marker_68f91579aba0d12b55da4e1248e10a5e.bindPopup(
-      popup_69ee173f6d4680fc7d765641c4189f55
-    );
+        
+    
+    
+            var marker_cb5a4e2b54475d7dba2aa8a4c394608e = L.marker(
+                [40.4168, -3.7038],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_3327a72e50124d25071b6ec1a973105c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_cb5a4e2b54475d7dba2aa8a4c394608e.setIcon(icon_3327a72e50124d25071b6ec1a973105c);
+        
+    
+        var popup_733ade3b4487d6be73f6fceb3993dee8 = L.popup({"maxWidth": 1000});
 
-    var marker_aed98a2df7f12bf0e3d6e434c10a361d = L.marker(
-      [3.139, 101.6869],
-      {}
-    ).addTo(map_2f80842c34a7f5f51fb02f1e4cac2db4);
+        
+            
+                var html_8f8d017e5afc813e809b480b8bc6af9e = $(`<div id="html_8f8d017e5afc813e809b480b8bc6af9e" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Spain</h3><h4 style="margin: 0; color: #F0632F;">スペイン</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">CARDONA</strong> (Loopstation)                 </p>                 </div></div>`)[0];
+                popup_733ade3b4487d6be73f6fceb3993dee8.setContent(html_8f8d017e5afc813e809b480b8bc6af9e);
+            
+        
 
-    var icon_6a902110a0941fe83fd1b7ad6479e38b = L.AwesomeMarkers.icon({
-      extraClasses: "fa-rotate-0",
-      icon: "info-sign",
-      iconColor: "white",
-      markerColor: "red",
-      prefix: "glyphicon",
-    });
-    marker_aed98a2df7f12bf0e3d6e434c10a361d.setIcon(
-      icon_6a902110a0941fe83fd1b7ad6479e38b
-    );
+        marker_cb5a4e2b54475d7dba2aa8a4c394608e.bindPopup(popup_733ade3b4487d6be73f6fceb3993dee8)
+        ;
 
-    var popup_646a4a142d09f712a6325acf7b9878b5 = L.popup({ maxWidth: 300 });
+        
+    
+    
+            var marker_fd4d0c1e1f377c91f523732d257c55b1 = L.marker(
+                [52.52, 13.405],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_923e2a8e22fbb1b85baed1653a7e01e1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_fd4d0c1e1f377c91f523732d257c55b1.setIcon(icon_923e2a8e22fbb1b85baed1653a7e01e1);
+        
+    
+        var popup_7d4679333b6117f21cde578ac8e1161b = L.popup({"maxWidth": 1000});
 
-    var html_3ebcc6a78c4c5b27a5aa93813990e385 = $(
-      `<div id="html_3ebcc6a78c4c5b27a5aa93813990e385" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Malaysia</h3><h4 style="margin: 0; color: #F0632F;">マレーシア</h4>             <p style="margin: 5px 0;">                 <strong>STITCH</strong> (Solo)<br>  <strong>まっちゃん</strong> (kawaii champion)          </p>             </div></div>`
-    )[0];
-    popup_646a4a142d09f712a6325acf7b9878b5.setContent(
-      html_3ebcc6a78c4c5b27a5aa93813990e385
-    );
+        
+            
+                var html_1deca5a9a1eeb3a4d583b8989aa0680e = $(`<div id="html_1deca5a9a1eeb3a4d583b8989aa0680e" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Germany</h3><h4 style="margin: 0; color: #F0632F;">ドイツ</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">SYJO</strong> (Loopstation)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">SYJO</strong> (Producer)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">ANTRIX</strong> (Producer)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">KAOS</strong> (Producer)                 </p>                 </div></div>`)[0];
+                popup_7d4679333b6117f21cde578ac8e1161b.setContent(html_1deca5a9a1eeb3a4d583b8989aa0680e);
+            
+        
 
-    marker_aed98a2df7f12bf0e3d6e434c10a361d.bindPopup(
-      popup_646a4a142d09f712a6325acf7b9878b5
-    );
-  </script>
+        marker_fd4d0c1e1f377c91f523732d257c55b1.bindPopup(popup_7d4679333b6117f21cde578ac8e1161b)
+        ;
+
+        
+    
+    
+            var marker_f8dda9cd0e066e8901c768a6c2fdbc85 = L.marker(
+                [50.8503, 4.3517],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_53a6e4cefa3b100dac3cc55f14437b69 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f8dda9cd0e066e8901c768a6c2fdbc85.setIcon(icon_53a6e4cefa3b100dac3cc55f14437b69);
+        
+    
+        var popup_1103be087d3c9080953f7384a47c1968 = L.popup({"maxWidth": 1000});
+
+        
+            
+                var html_d7c9e1e7612809fb9aa95611d8bd48e9 = $(`<div id="html_d7c9e1e7612809fb9aa95611d8bd48e9" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Belgium</h3><h4 style="margin: 0; color: #F0632F;">ベルギー</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">YASWEDE</strong> (Loopstation)                 </p>                 </div></div>`)[0];
+                popup_1103be087d3c9080953f7384a47c1968.setContent(html_d7c9e1e7612809fb9aa95611d8bd48e9);
+            
+        
+
+        marker_f8dda9cd0e066e8901c768a6c2fdbc85.bindPopup(popup_1103be087d3c9080953f7384a47c1968)
+        ;
+
+        
+    
+    
+            var marker_298256ed88d123b7f6288c31a6e32ab3 = L.marker(
+                [28.6139, 77.209],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_f9293dfd9afa7b830ce0a3bb64815843 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_298256ed88d123b7f6288c31a6e32ab3.setIcon(icon_f9293dfd9afa7b830ce0a3bb64815843);
+        
+    
+        var popup_2cb576dae40ec506a7e2c1693ed2405e = L.popup({"maxWidth": 1000});
+
+        
+            
+                var html_d7722dce9a312786c6f71b51b302fb0a = $(`<div id="html_d7722dce9a312786c6f71b51b302fb0a" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">India</h3><h4 style="margin: 0; color: #F0632F;">インド</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">RAJE</strong> (Loopstation)                 </p>                                  <p style="margin: 5px 0;">                     <strong style="color: #000000">THE YOUNG DRUG</strong> <span style="font-size: 0.8em; color=#222222">[Crew]【BASSFACE, KAWAI SENPAI, VINZAYN, ANI SAKTE】</span>                 </p>                 </div></div>`)[0];
+                popup_2cb576dae40ec506a7e2c1693ed2405e.setContent(html_d7722dce9a312786c6f71b51b302fb0a);
+            
+        
+
+        marker_298256ed88d123b7f6288c31a6e32ab3.bindPopup(popup_2cb576dae40ec506a7e2c1693ed2405e)
+        ;
+
+        
+    
+    
+            var marker_14317a6f8ad917d186798395efd18662 = L.marker(
+                [55.6761, 12.5683],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_7b5265ff6b1369bd97ca4fb1bb8de45b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_14317a6f8ad917d186798395efd18662.setIcon(icon_7b5265ff6b1369bd97ca4fb1bb8de45b);
+        
+    
+        var popup_e3f6bf5b9963714e55228e6ee611ad0e = L.popup({"maxWidth": 1000});
+
+        
+            
+                var html_e1ef36ae0f06f1cd509020c3f9345b20 = $(`<div id="html_e1ef36ae0f06f1cd509020c3f9345b20" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Denmark</h3><h4 style="margin: 0; color: #F0632F;">デンマーク</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">KBA</strong> (Producer)                 </p>                 </div></div>`)[0];
+                popup_e3f6bf5b9963714e55228e6ee611ad0e.setContent(html_e1ef36ae0f06f1cd509020c3f9345b20);
+            
+        
+
+        marker_14317a6f8ad917d186798395efd18662.bindPopup(popup_e3f6bf5b9963714e55228e6ee611ad0e)
+        ;
+
+        
+    
+    
+            var marker_20eb2f23a658ffe1b86e1981453890f5 = L.marker(
+                [47.4979, 19.0402],
+                {}
+            ).addTo(map_1939b7636d19952a2a6f395d551d0375);
+        
+    
+            var icon_9f718aa49ed7b9efd262da98438269c7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_20eb2f23a658ffe1b86e1981453890f5.setIcon(icon_9f718aa49ed7b9efd262da98438269c7);
+        
+    
+        var popup_161d73cefb4168a067296a0558389f4f = L.popup({"maxWidth": 1000});
+
+        
+            
+                var html_7f0ffd82be11a2d557b96e07daad76fc = $(`<div id="html_7f0ffd82be11a2d557b96e07daad76fc" style="width: 100.0%; height: 100.0%;"><div style="font-family: Noto sans JP; font-size: 14px;"><h3 style="margin: 0; color: #F0632F;">Hungary</h3><h4 style="margin: 0; color: #F0632F;">ハンガリー</h4>                 <p style="margin: 5px 0;">                     <strong style="color: #000000">ME0NE</strong> <span style="font-size: 0.8em; color=#222222">[Crew]【KRISTÓF, RAPTOR, BLAZ, SHACKLE】</span>                 </p>                 </div></div>`)[0];
+                popup_161d73cefb4168a067296a0558389f4f.setContent(html_7f0ffd82be11a2d557b96e07daad76fc);
+            
+        
+
+        marker_20eb2f23a658ffe1b86e1981453890f5.bindPopup(popup_161d73cefb4168a067296a0558389f4f)
+        ;
+
+        
+    
+</script>
 </html>
