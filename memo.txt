@@ -1,57 +1,22 @@
--- participants.db
+headに以下の内容を追加
 
--- 部門テーブル
--- 国テーブル
-CREATE TABLE countries (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,  -- 国名
-    name_ja TEXT NOT NULL,  -- 国名（日本語）
-    lat REAL NOT NULL,  -- 首都の緯度
-    lon REAL NOT NULL  -- 首都の緯度
-    iso_code INTEGER NOT NULL  -- ISO 3166-1 numeric
-);
+header {
+    top: 0;
+    width: 100%;
+    background-color: #f0632f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
 
--- 出場者テーブル
-CREATE TABLE participants (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,  -- 出場者名
-    category TEXT NOT NULL,  -- 部門
-    iso_code INTEGER NOT NULL,  -- 国
-    members TEXT,
-    FOREIGN KEY (iso_code) REFERENCES countries(iso_code)
-);
+}
+html, body, h1, h3, h4 {
+    font-family: 'Noto sans JP';
+}
 
-INSERT INTO countries (name, name_ja, lat, lon, iso_code) VALUES
-('Japan', '日本', 35.6895, 139.6917, 392),
-('USA', 'アメリカ合衆国', 38.9072, -77.0369, 840),
-('Germany', 'ドイツ', 52.5200, 13.4050, 276),
-('France', 'フランス', 48.8566, 2.3522, 250),
-('Korea', '韓国', 37.5665, 126.9780, 410),
-('Bulgaria', 'ブルガリア', 42.6977, 23.3219, 100),
-('Ireland', 'アイルランド', 53.3498, -6.2603, 372),
-('Saudi Arabia', 'サウジアラビア', 24.7136, 46.6753, 682),
-('Canada', 'カナダ', 45.4215, -75.6972, 124),
-('Russia', 'ロシア', 55.7558, 37.6176, 643),
-('Malaysia', 'マレーシア', 3.1390, 101.6869, 458),
-('Iran', 'イラン', 35.6892, 51.3890, 364),
-('Austria', 'オーストリア', 48.2082, 16.3738, 40),
-('Hong Kong', '香港', 22.3193, 114.1694, 344),
-('Spain', 'スペイン', 40.4168, -3.7038, 724),
-('Belgium', 'ベルギー', 50.8503, 4.3517, 56),
-('India', 'インド', 28.6139, 77.2090, 356),
-('Denmark', 'デンマーク', 55.6761, 12.5683, 208),
-('Hungary', 'ハンガリー', 47.4979, 19.0402, 348);
-
-INSERT INTO participants (name, category, iso_code) VALUES
-("WING", "Solo", 410),
-("ALEXINHO", "Solo", 250),
-("JULARD", "Solo", 250),
-("KAJI", "Solo", 392),
-("MAXO", "Solo", 100),
-("OSIS", "Solo", 372),
-("ABO ICE", "Solo", 682),
-("STEADY", "Solo", 410),
-("PACMAX", "Solo", 250),
-("HELIUM", "Solo", 643),
-("IMPROVER", "Solo", 643),
-("STITCH", "Solo", 458);
+bodyに以下の内容を追加
+<div>
+    <header>
+    <h1>マップ</h1>
+    <p>マップ上のマーカーをクリックすると、詳細な情報が表示されます。</p>
+    </header>
+</div>

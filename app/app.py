@@ -3,7 +3,8 @@ from collections import defaultdict
 import folium
 from flask import Flask, render_template
 
-from models.database import db_session
+# DBの内容を変更する場合には以下のimportも必要
+# from models.database import db_session
 from models.models import Country, Participant
 
 app = Flask(__name__)
@@ -46,7 +47,7 @@ def index():
             if participant.members:
                 popup_content += f'''
                 <p style="margin: 5px 0;">
-                    <strong style="color: #000000">{participant.name}</strong> <span style="font-size: 0.8em; color=#222222">[{participant.category}]【{participant.members}】</span>
+                    <strong style="color: #000000">{participant.name}</strong> ({participant.category})<span style="font-size: 0.7em; color=#222222"><br>【{participant.members}】</span>
                 </p>
                 '''
             else:
@@ -70,48 +71,6 @@ def index():
 
     return render_template('index.html')
 
-
-def add():
-    participants = [
-        {
-            'name': 'KOWLER RANGERS',
-            'category': 'Crew',
-            'iso_code': 250,
-            'members': "OSY, TUNECINOO, EPOCK, AËLMIGHT"
-        },
-        {
-            'name': 'ME0NE',
-            'category': 'Crew',
-            'iso_code': 348,
-            'members': "KRISTÓF, RAPTOR, BLAZ, SHACKLE"
-        },
-        {
-            'name': 'SOUND OF SONY Ω',
-            'category': 'Crew',
-            'iso_code': 392,
-            'members': "SHINYAAA, BLY CREPSLEY, FKD"
-        },
-        {
-            'name': 'THE YOUNG DRUG',
-            'category': 'Crew',
-            'iso_code': 356,
-            'members': "BASSFACE, KAWAI SENPAI, VINZAYN, ANI SAKTE"
-        },
-    ]
-    for participant in participants:
-        p = Participant(
-            name=participant['name'],
-            category=participant['category'],
-            iso_code=participant['iso_code'],
-            members=participant['members'] if 'members' in participant else None
-        )
-        db_session.add(p)
-
-    db_session.commit()
-    print('added')
-
-
-# add()
 
 if __name__ == "__main__":
     app.run(debug=True)
