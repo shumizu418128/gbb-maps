@@ -26,6 +26,14 @@ def index():
             iso_code=participant.iso_code).first()
         coord_participants[(country.lat, country.lon)].append(participant)
 
+    # 丸画像になっている国のリスト
+    country_exception = [
+        "Taiwan",
+        "Hong Kong",
+        "Saudi Arabia",
+        "Iran"
+    ]
+
     # グループ化した参加者ごとにマーカーを追加
     for (lat, lon), participants in coord_participants.items():
         # lat, lon = 緯度, 経度
@@ -58,11 +66,24 @@ def index():
                 '''
         popup_content += '</div>'
 
+        # 画像に合わせてアイコンのサイズを変更
+        # アイコン素材がある国の場合
+        if country_name not in country_exception:
+            icon_size = (56, 42)
+            icon_anchor = (0, 5)
+
+        # アイコン素材がない国の場合
+        else:
+            icon_size = (56, 38)
+            icon_anchor = (28, 5)
+            popup_content += '<br><p style="margin: 5px 0;">国旗素材の都合で<br>他国とは違う画像です</p>'
+
         popup = folium.Popup(popup_content, max_width=1000)
 
         flag_icon = folium.CustomIcon(
             icon_image=r"./models/flags/" + country_name + ".webp",  # アイコン画像のパス
-            icon_size=(45, 45),  # アイコンのサイズ（幅、高さ）
+            icon_size=icon_size,  # アイコンのサイズ（幅、高さ）
+            icon_anchor=icon_anchor  # アイコンのアンカー位置
         )
         # マーカーを追加
         folium.Marker(
