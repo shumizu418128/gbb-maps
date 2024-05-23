@@ -76,7 +76,7 @@ def index():
         else:
             icon_size = (56, 38)
             icon_anchor = (28, 5)
-            popup_content += '<br><p style="margin: 5px 0;">国旗素材の都合で<br>他国とは違う画像です</p>'
+            popup_content += '<br><p style="margin: 5px 0;">※国旗素材の都合で、<br>他国とは違う画像です</p>'
 
         popup = folium.Popup(popup_content, max_width=1000)
 
