@@ -70,7 +70,7 @@ def index():
         # アイコン素材がある国の場合
         if country_name not in country_exception:
             icon_size = (56, 42)
-            icon_anchor = (0, 5)
+            icon_anchor = (0, 40)
 
         # アイコン素材がない国の場合
         else:
