@@ -61,7 +61,7 @@ def index():
         popup = folium.Popup(popup_content, max_width=1000)
 
         flag_icon = folium.CustomIcon(
-            icon_image=r"./models/flags/" + country_name + ".png",  # アイコン画像のパス
+            icon_image=r"./models/flags/" + country_name + ".webp",  # アイコン画像のパス
             icon_size=(45, 45),  # アイコンのサイズ（幅、高さ）
         )
         # マーカーを追加
