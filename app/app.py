@@ -97,5 +97,60 @@ def index():
     return render_template('index.html')
 
 
+@app.route("/bcj")
+def bcj():
+    # 日本の中心付近
+    map_center = [36.2048, 138.2529]
+    m = folium.Map(location=map_center, zoom_start=5)
+    locations = [
+        {"name": "北海道予選", "venue": "UTAGE SAPPORO", "lat": 43.05431210452901, "lon": 141.35382666830552, "date": "6/8"},
+        {"name": "福岡予選", "venue": "CLUB Cat's", "lat": 33.59337167750245, "lon": 130.3950007857057, "date": "6/22"},
+        {"name": "沖縄予選", "venue": "epica okinawa", "lat": 26.218312463216623, "lon": 127.68008386065539, "date": "7/7"},
+        {"name": "仙台予選", "venue": "ART NIGHT CLUB", "lat": 38.262858617931016, "lon": 140.86970762308982, "date": "7/21"},
+        {"name": "名古屋予選", "venue": "UTAGE NAGOYA", "lat": 35.17214947255007, "lon": 136.90761709635382, "date": "8/3"},
+        {"name": "大阪予選", "venue": "GHOST Osaka", "lat": 34.670944669892705, "lon": 135.49749186698628, "date": "8/11"},
+        {"name": "東京予選", "venue": "BAIA", "lat": 35.661638682891684, "lon": 139.69907479648504, "date": "8/18"},
+        {"name": "BEATCITY JAPAN 本戦", "venue": "EX THEATER ROPPONGI", "lat": 35.66126439102072, "lon": 139.72729714238233, "date": "9/7"},
+        {"name": "GBB 2024", "venue": "Toyosu PIT", "lat": 35.64960390462384, "lon": 139.78837687277277, "date": "11/1-3"},
+    ]
+    # グループ化した参加者ごとにマーカーを追加
+    for location in locations:
+
+        # ポップアップの内容を作成
+        popup_content = '<div style="font-family: Noto sans JP; font-size: 14px;">'
+        popup_content += f'<h3 style="margin: 0; color: #F0632F;">{location["name"]}</h3>'
+        popup_content += f'<h4 style="margin: 0; color: #F0632F;">{location["venue"]}</h4>'
+
+        popup_content += f'<p style="margin: 5px 0;">{location["date"]}</p><div>'
+
+        popup = folium.Popup(popup_content, max_width=1000)
+
+        # マーカーを追加
+        if location["name"] == "BEATCITY JAPAN 本戦":
+            folium.Marker(
+                location=[location["lat"], location["lon"]],
+                popup=popup,
+                icon=folium.Icon(color='black', icon='flag')
+            ).add_to(m)
+
+        elif location["name"] == "GBB 2024":
+            folium.Marker(
+                location=[location["lat"], location["lon"]],
+                popup=popup,
+                icon=folium.Icon(color='orange', icon='flag')
+            ).add_to(m)
+
+        else:
+            folium.Marker(
+                location=[location["lat"], location["lon"]],
+                popup=popup,
+                icon=folium.Icon(color='white', icon='flag', icon_color='black')
+            ).add_to(m)
+
+    m.save(r'app/templates/bcj.html')
+
+    return render_template('bcj.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
