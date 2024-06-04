@@ -4,7 +4,7 @@ import folium
 from flask import Flask, render_template
 
 # DBの内容を変更する場合には以下のimportも必要
-# from models.database import db_session
+from models.database import db_session
 from models.models import Country, Participant
 
 app = Flask(__name__)
@@ -92,6 +92,7 @@ def index():
             icon=flag_icon
         ).add_to(m)
 
+    # add()
     m.save(r'app/templates/index.html')
 
     return render_template('index.html')
@@ -150,6 +151,32 @@ def bcj():
     m.save(r'app/templates/bcj.html')
 
     return render_template('bcj.html')
+
+
+# 国コードの一覧
+# https://freefielder.jp/country_code/
+
+# flask チュートリアル
+# https://qiita.com/usaitoen/items/f8aa0bf68007e18d6882
+
+
+def add():
+    italy = Country(
+        name="Italy",
+        name_ja="イタリア",
+        lat=41.8719,
+        lon=12.5674,
+        iso_code=380
+    )
+    participant = Participant(
+        name="BLACKROLL",
+        category="Solo",
+        iso_code=380,
+        members=""
+    )
+    db_session.add(italy)
+    db_session.add(participant)
+    db_session.commit()
 
 
 if __name__ == "__main__":
