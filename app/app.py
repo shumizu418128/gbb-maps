@@ -105,7 +105,7 @@ def bcj():
     m = folium.Map(location=map_center, zoom_start=5)
     locations = [
         {"name": "北海道予選", "venue": "UTAGE SAPPORO", "lat": 43.05431210452901, "lon": 141.35382666830552, "date": "6/8"},
-        {"name": "福岡予選", "venue": "CLUB Cat's", "lat": 33.59337167750245, "lon": 130.3950007857057, "date": "6/22"},
+        {"name": "福岡予選", "venue": "Ibiza FUKUOKA", "lat": 33.58842834514552, "lon": 130.39590583064594, "date": "6/22"},
         {"name": "沖縄予選", "venue": "epica okinawa", "lat": 26.218312463216623, "lon": 127.68008386065539, "date": "7/7"},
         {"name": "仙台予選", "venue": "ART NIGHT CLUB", "lat": 38.262858617931016, "lon": 140.86970762308982, "date": "7/21"},
         {"name": "名古屋予選", "venue": "UTAGE NAGOYA", "lat": 35.17214947255007, "lon": 136.90761709635382, "date": "8/3"},
